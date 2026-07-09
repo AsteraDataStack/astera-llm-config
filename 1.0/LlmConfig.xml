@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LLMConfigurations>
+  <Models>
+    <!-- OpenAI Models -->
+    <Model Name="gpt-4o" Provider="OpenAi" InputCost="2.50" OutputCost="10.00" LoopType="ResponsesApi" DisplayName="GPT-4o" Description="OpenAI's most advanced multimodal model">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="128000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
+        <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-2.0" />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="4096" Description="Maximum number of tokens to generate. Range: 1-16384" />
+        <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Nucleus sampling parameter. Range: 0.0-1.0" />
+        <Property Name="frequency_penalty" DataType="Decimal" DefaultValue="0.0" Description="Reduces repetition of token sequences. Range: 0.0-2.0" />
+        <Property Name="presence_penalty" DataType="Decimal" DefaultValue="0.0" Description="Encourages model to talk about new topics. Range: 0.0-2.0" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="120" Description="Request timeout in seconds. Range: 10-600" />
+      </Properties>
+    </Model>
+
+    <Model Name="gpt-4o-mini" Provider="OpenAi" InputCost="0.15" OutputCost="0.60" LoopType="ResponsesApi" DisplayName="GPT-4o Mini" Description="Fast and affordable model for lighter tasks">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="128000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
+        <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-2.0" />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="4096" Description="Maximum number of tokens to generate. Range: 1-16384" />
+        <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Nucleus sampling parameter. Range: 0.0-1.0" />
+        <Property Name="frequency_penalty" DataType="Decimal" DefaultValue="0.0" Description="Reduces repetition. Range: 0.0-2.0" />
+        <Property Name="presence_penalty" DataType="Decimal" DefaultValue="0.0" Description="Encourages new topics. Range: 0.0-2.0" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="120" Description="Request timeout in seconds. Range: 10-600" />
+      </Properties>
+    </Model>
+
+    <Model Name="o4-mini" Provider="OpenAi" InputCost="3.00" OutputCost="12.00" LoopType="ResponsesApi" SupportsReasoning="true" DisplayName="O4 Mini" Description="Reasoning model optimized for complex problems">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="200000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
+        <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-2.0" />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="4096" Description="Maximum number of tokens to generate. Range: 1-16384" />
+        <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Nucleus sampling parameter. Range: 0.0-1.0" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="180" Description="Request timeout in seconds. Range: 10-600" />
+      </Properties>
+    </Model>
+
+    <Model Name="o4-mini-high" Provider="OpenAi" InputCost="3.00" OutputCost="12.00" LoopType="ResponsesApi" SupportsReasoning="true" DisplayName="O4 Mini High" Description="Higher quality reasoning mode">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="200000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
+        <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-2.0" />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="4096" Description="Maximum number of tokens to generate. Range: 1-16384" />
+        <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Nucleus sampling parameter. Range: 0.0-1.0" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="180" Description="Request timeout in seconds. Range: 10-600" />
+      </Properties>
+    </Model>
+
+    <Model Name="o3" Provider="OpenAi" InputCost="15.00" OutputCost="60.00" LoopType="ResponsesApi" SupportsReasoning="true" DisplayName="O3" Description="Advanced reasoning model for complex tasks">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="200000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
+        <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-2.0" />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="4096" Description="Maximum number of tokens to generate. Range: 1-32768" />
+        <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Nucleus sampling parameter. Range: 0.0-1.0" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="300" Description="Request timeout in seconds. Range: 10-600" />
+      </Properties>
+    </Model>
+
+    <Model Name="gpt-4.1" Provider="OpenAi" InputCost="2.00" OutputCost="8.00" LoopType="ResponsesApi" DisplayName="GPT-4.1" Description="Enhanced GPT-4 model">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="1047576" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
+        <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-2.0" />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="4096" Description="Maximum number of tokens to generate. Range: 1-16384" />
+        <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Nucleus sampling parameter. Range: 0.0-1.0" />
+        <Property Name="frequency_penalty" DataType="Decimal" DefaultValue="0.0" Description="Reduces repetition. Range: 0.0-2.0" />
+        <Property Name="presence_penalty" DataType="Decimal" DefaultValue="0.0" Description="Encourages new topics. Range: 0.0-2.0" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="120" Description="Request timeout in seconds. Range: 10-600" />
+      </Properties>
+    </Model>
+
+    <Model Name="gpt-4.1-mini" Provider="OpenAi" InputCost="0.40" OutputCost="1.60" LoopType="ResponsesApi" DisplayName="GPT-4.1 Mini" Description="Efficient GPT-4.1 variant">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="1047576" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
+        <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-2.0" />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="4096" Description="Maximum number of tokens to generate. Range: 1-16384" />
+        <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Nucleus sampling parameter. Range: 0.0-1.0" />
+        <Property Name="frequency_penalty" DataType="Decimal" DefaultValue="0.0" Description="Reduces repetition. Range: 0.0-2.0" />
+        <Property Name="presence_penalty" DataType="Decimal" DefaultValue="0.0" Description="Encourages new topics. Range: 0.0-2.0" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="120" Description="Request timeout in seconds. Range: 10-600" />
+      </Properties>
+    </Model>
+
+    <Model Name="gpt-4.1-nano" Provider="OpenAi" InputCost="0.25" OutputCost="1.00" LoopType="ResponsesApi" DisplayName="GPT-4.1 Nano" Description="Ultra-efficient GPT-4.1 for simple tasks">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="128000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
+        <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-2.0" />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="2048" Description="Maximum number of tokens to generate. Range: 1-8192" />
+        <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Nucleus sampling parameter. Range: 0.0-1.0" />
+        <Property Name="frequency_penalty" DataType="Decimal" DefaultValue="0.0" Description="Reduces repetition. Range: 0.0-2.0" />
+        <Property Name="presence_penalty" DataType="Decimal" DefaultValue="0.0" Description="Encourages new topics. Range: 0.0-2.0" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="120" Description="Request timeout in seconds. Range: 10-600" />
+      </Properties>
+    </Model>
+
+    <Model Name="gpt-5" Provider="OpenAi" InputCost="1.25" OutputCost="10.00" LoopType="ResponsesApi" SupportsReasoning="true" DisplayName="GPT-5" Description="Next generation GPT model with improved capabilities">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="256000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
+        <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-2.0" />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="8192" Description="Maximum number of tokens to generate. Range: 1-32768" />
+        <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Nucleus sampling parameter. Range: 0.0-1.0" />
+        <Property Name="frequency_penalty" DataType="Decimal" DefaultValue="0.0" Description="Reduces repetition. Range: 0.0-2.0" />
+        <Property Name="presence_penalty" DataType="Decimal" DefaultValue="0.0" Description="Encourages new topics. Range: 0.0-2.0" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="180" Description="Request timeout in seconds. Range: 10-600" />
+      </Properties>
+    </Model>
+
+    <Model Name="gpt-5-mini" Provider="OpenAi" InputCost="0.25" OutputCost="2.00" LoopType="ResponsesApi" SupportsReasoning="true" DisplayName="GPT-5 Mini" Description="Efficient GPT-5 variant">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="256000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
+        <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-2.0" />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="4096" Description="Maximum number of tokens to generate. Range: 1-16384" />
+        <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Nucleus sampling parameter. Range: 0.0-1.0" />
+        <Property Name="frequency_penalty" DataType="Decimal" DefaultValue="0.0" Description="Reduces repetition. Range: 0.0-2.0" />
+        <Property Name="presence_penalty" DataType="Decimal" DefaultValue="0.0" Description="Encourages new topics. Range: 0.0-2.0" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="120" Description="Request timeout in seconds. Range: 10-600" />
+      </Properties>
+    </Model>
+
+    <Model Name="gpt-5-nano" Provider="OpenAi" InputCost="0.05" OutputCost="0.40" LoopType="ResponsesApi" SupportsReasoning="true" DisplayName="GPT-5 Nano" Description="Ultra-efficient GPT-5 for simple tasks">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="128000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
+        <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-2.0" />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="2048" Description="Maximum number of tokens to generate. Range: 1-8192" />
+        <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Nucleus sampling parameter. Range: 0.0-1.0" />
+        <Property Name="frequency_penalty" DataType="Decimal" DefaultValue="0.0" Description="Reduces repetition. Range: 0.0-2.0" />
+        <Property Name="presence_penalty" DataType="Decimal" DefaultValue="0.0" Description="Encourages new topics. Range: 0.0-2.0" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="120" Description="Request timeout in seconds. Range: 10-600" />
+      </Properties>
+    </Model>
+
+    <!-- Anthropic Claude Models -->
+    <Model Name="claude-opus-4-6" Provider="Anthropic" InputCost="15.00" OutputCost="75.00" LoopType="Standard" DisplayName="Claude Opus 4.6" Description="Most capable Claude model for complex tasks">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="200000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
+        <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-1.0" />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="4096" Description="Maximum number of tokens to generate. Range: 1-200000. REQUIRED." />
+        <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Nucleus sampling parameter. Range: 0.0-1.0" />
+        <Property Name="top_k" DataType="Integer" DefaultValue="0" Description="Top-k sampling parameter. Range: 0-500" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="180" Description="Request timeout in seconds. Range: 10-600" />
+      </Properties>
+    </Model>
+
+    <Model Name="claude-sonnet-4-6" Provider="Anthropic" InputCost="3.00" OutputCost="15.00" LoopType="Standard" DisplayName="Claude Sonnet 4.6" Description="Latest balanced performance and intelligence">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="200000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
+        <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-1.0" />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="4096" Description="Maximum number of tokens to generate. Range: 1-200000. REQUIRED." />
+        <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Nucleus sampling parameter. Range: 0.0-1.0" />
+        <Property Name="top_k" DataType="Integer" DefaultValue="0" Description="Top-k sampling parameter. Range: 0-500" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="120" Description="Request timeout in seconds. Range: 10-600" />
+      </Properties>
+    </Model>
+
+    <Model Name="claude-haiku-4-5-20251001" Provider="Anthropic" InputCost="0.80" OutputCost="4.00" LoopType="Standard" DisplayName="Claude Haiku 4.5" Description="Fast and affordable Claude model">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="200000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
+        <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-1.0" />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="4096" Description="Maximum number of tokens to generate. Range: 1-200000. REQUIRED." />
+        <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Nucleus sampling parameter. Range: 0.0-1.0" />
+        <Property Name="top_k" DataType="Integer" DefaultValue="0" Description="Top-k sampling parameter. Range: 0-500" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="120" Description="Request timeout in seconds. Range: 10-600" />
+      </Properties>
+    </Model>
+
+    <Model Name="claude-sonnet-4-5" Provider="Anthropic" InputCost="3.00" OutputCost="15.00" LoopType="Standard" DisplayName="Claude Sonnet 4.5" Description="Previous generation Sonnet">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="200000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
+        <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-1.0" />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="4096" Description="Maximum number of tokens to generate. Range: 1-200000. REQUIRED." />
+        <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Nucleus sampling parameter. Range: 0.0-1.0" />
+        <Property Name="top_k" DataType="Integer" DefaultValue="0" Description="Top-k sampling parameter. Range: 0-500" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="120" Description="Request timeout in seconds. Range: 10-600" />
+      </Properties>
+    </Model>
+
+    <Model Name="claude-opus-4-1-20250805" Provider="Anthropic" InputCost="15.00" OutputCost="75.00" LoopType="Standard" DisplayName="Claude Opus 4.1" Description="Previous generation Opus model">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="200000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
+        <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-1.0" />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="4096" Description="Maximum number of tokens to generate. Range: 1-200000. REQUIRED." />
+        <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Nucleus sampling parameter. Range: 0.0-1.0" />
+        <Property Name="top_k" DataType="Integer" DefaultValue="0" Description="Top-k sampling parameter. Range: 0-500" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="180" Description="Request timeout in seconds. Range: 10-600" />
+      </Properties>
+    </Model>
+
+    <Model Name="claude-sonnet-4-20250514" Provider="Anthropic" InputCost="3.00" OutputCost="15.00" LoopType="Standard" DisplayName="Claude Sonnet 4" Description="Balanced performance and intelligence">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="200000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
+        <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-1.0" />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="4096" Description="Maximum number of tokens to generate. Range: 1-200000. REQUIRED." />
+        <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Nucleus sampling parameter. Range: 0.0-1.0" />
+        <Property Name="top_k" DataType="Integer" DefaultValue="0" Description="Top-k sampling parameter. Range: 0-500" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="120" Description="Request timeout in seconds. Range: 10-600" />
+      </Properties>
+    </Model>
+
+    <Model Name="claude-3-7-sonnet-20250219" Provider="Anthropic" InputCost="3.00" OutputCost="15.00" LoopType="Standard" DisplayName="Claude 3.7 Sonnet" Description="Enhanced Sonnet model">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="200000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
+        <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-1.0" />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="4096" Description="Maximum number of tokens to generate. Range: 1-200000. REQUIRED." />
+        <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Nucleus sampling parameter. Range: 0.0-1.0" />
+        <Property Name="top_k" DataType="Integer" DefaultValue="0" Description="Top-k sampling parameter. Range: 0-500" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="120" Description="Request timeout in seconds. Range: 10-600" />
+      </Properties>
+    </Model>
+
+    <Model Name="claude-3-5-sonnet-20240620" Provider="Anthropic" InputCost="3.00" OutputCost="15.00" LoopType="Standard" DisplayName="Claude 3.5 Sonnet" Description="Previous generation Sonnet">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="200000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
+        <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-1.0" />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="4096" Description="Maximum number of tokens to generate. Range: 1-200000. REQUIRED." />
+        <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Nucleus sampling parameter. Range: 0.0-1.0" />
+        <Property Name="top_k" DataType="Integer" DefaultValue="0" Description="Top-k sampling parameter. Range: 0-500" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="120" Description="Request timeout in seconds. Range: 10-600" />
+      </Properties>
+    </Model>
+
+    <!-- DeepSeek Models -->
+    <Model Name="deepseek-v4-flash" Provider="DeepSeek" InputCost="0.14" OutputCost="0.28" LoopType="Standard" DisplayName="DeepSeek V4 Flash" Description="V4 Flash with 1M context — supports thinking + non-thinking modes">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="1000000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
+        <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Ignored in thinking mode. Range: 0.0-2.0" />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="4096" Description="Maximum number of tokens to generate. Range: 1-8192" />
+        <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Nucleus sampling parameter. Ignored in thinking mode. Range: 0.0-1.0" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="180" Description="Request timeout in seconds. Range: 10-600" />
+      </Properties>
+    </Model>
+
+    <Model Name="deepseek-chat" Provider="DeepSeek" InputCost="0.27" OutputCost="1.10" LoopType="Standard" DisplayName="DeepSeek V3" Description="General-purpose model with vision and tool support">
+      <Properties>
+        <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-2.0" />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="4096" Description="Maximum number of tokens to generate. Range: 1-8192" />
+        <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Nucleus sampling parameter. Range: 0.0-1.0" />
+        <Property Name="frequency_penalty" DataType="Decimal" DefaultValue="0.0" Description="Reduces repetition of token sequences. Range: 0.0-2.0" />
+        <Property Name="presence_penalty" DataType="Decimal" DefaultValue="0.0" Description="Encourages model to talk about new topics. Range: 0.0-2.0" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="120" Description="Request timeout in seconds. Range: 10-600" />
+      </Properties>
+    </Model>
+
+    <Model Name="deepseek-reasoner" Provider="DeepSeek" InputCost="0.55" OutputCost="2.19" LoopType="Standard" DisplayName="DeepSeek R1" Description="Reasoning model with chain-of-thought thinking and tool support">
+      <Properties>
+        <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Ignored in thinking mode. Range: 0.0-2.0" />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="8192" Description="Maximum number of tokens to generate. Range: 1-16384" />
+        <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Ignored in thinking mode. Range: 0.0-1.0" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="300" Description="Request timeout in seconds. Range: 10-600" />
+      </Properties>
+    </Model>
+
+    <!-- Together AI Models -->
+    <Model Name="meta-llama/Llama-3.3-70B-Instruct-Turbo" Provider="TogetherAi" InputCost="0.88" OutputCost="0.88" LoopType="Standard" DisplayName="Llama 3.3 70B Turbo" Description="Meta's Llama 3.3 70B with function calling and structured outputs">
+      <Properties>
+        <Property Name="temperature" DataType="Decimal" DefaultValue="0.7" Description="Controls randomness in output. Range: 0.0-2.0" />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="4096" Description="Maximum number of tokens to generate. Range: 1-16384" />
+        <Property Name="top_p" DataType="Decimal" DefaultValue="0.9" Description="Nucleus sampling parameter. Range: 0.0-1.0" />
+        <Property Name="frequency_penalty" DataType="Decimal" DefaultValue="0.0" Description="Reduces repetition. Range: 0.0-2.0" />
+        <Property Name="presence_penalty" DataType="Decimal" DefaultValue="0.0" Description="Encourages new topics. Range: 0.0-2.0" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="120" Description="Request timeout in seconds. Range: 10-600" />
+      </Properties>
+    </Model>
+
+    <Model Name="Qwen/Qwen3.5-9B" Provider="TogetherAi" InputCost="0.10" OutputCost="0.15" LoopType="Standard" DisplayName="Qwen 3.5 9B" Description="Fast compact model with reasoning and vision">
+      <Properties>
+        <Property Name="temperature" DataType="Decimal" DefaultValue="0.7" Description="Controls randomness in output. Range: 0.0-2.0" />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="4096" Description="Maximum number of tokens to generate. Range: 1-8192" />
+        <Property Name="top_p" DataType="Decimal" DefaultValue="0.9" Description="Nucleus sampling parameter. Range: 0.0-1.0" />
+        <Property Name="frequency_penalty" DataType="Decimal" DefaultValue="0.0" Description="Reduces repetition. Range: 0.0-2.0" />
+        <Property Name="presence_penalty" DataType="Decimal" DefaultValue="0.0" Description="Encourages new topics. Range: 0.0-2.0" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="120" Description="Request timeout in seconds. Range: 10-600" />
+      </Properties>
+    </Model>
+
+    <Model Name="deepseek-ai/DeepSeek-V3.1" Provider="TogetherAi" InputCost="0.60" OutputCost="1.70" LoopType="Standard" DisplayName="DeepSeek V3.1 (Together)" Description="DeepSeek V3.1 671B via Together AI">
+      <Properties>
+        <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-2.0" />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="4096" Description="Maximum number of tokens to generate. Range: 1-8192" />
+        <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Nucleus sampling parameter. Range: 0.0-1.0" />
+        <Property Name="frequency_penalty" DataType="Decimal" DefaultValue="0.0" Description="Reduces repetition. Range: 0.0-2.0" />
+        <Property Name="presence_penalty" DataType="Decimal" DefaultValue="0.0" Description="Encourages new topics. Range: 0.0-2.0" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="120" Description="Request timeout in seconds. Range: 10-600" />
+      </Properties>
+    </Model>
+
+    <Model Name="deepseek-ai/DeepSeek-V4-Pro" Provider="TogetherAi" InputCost="1.74" OutputCost="3.48" LoopType="Standard" DisplayName="DeepSeek V4 Pro (Together)" Description="DeepSeek V4 Pro with function calling, JSON mode, and reasoning via Together AI">
+      <Properties>
+        <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-2.0" />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="4096" Description="Maximum number of tokens to generate. Range: 1-8192" />
+        <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Nucleus sampling parameter. Range: 0.0-1.0" />
+        <Property Name="frequency_penalty" DataType="Decimal" DefaultValue="0.0" Description="Reduces repetition. Range: 0.0-2.0" />
+        <Property Name="presence_penalty" DataType="Decimal" DefaultValue="0.0" Description="Encourages new topics. Range: 0.0-2.0" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="120" Description="Request timeout in seconds. Range: 10-600" />
+      </Properties>
+    </Model>
+
+    <Model Name="zai-org/GLM-5.2" Provider="TogetherAi" InputCost="1.40" OutputCost="4.40" LoopType="Standard" DisplayName="GLM 5.2 (Together)" Description="Z.ai GLM 5.2 with function calling and JSON mode via Together AI">
+      <Properties>
+        <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-2.0" />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="4096" Description="Maximum number of tokens to generate. Range: 1-8192" />
+        <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Nucleus sampling parameter. Range: 0.0-1.0" />
+        <Property Name="frequency_penalty" DataType="Decimal" DefaultValue="0.0" Description="Reduces repetition. Range: 0.0-2.0" />
+        <Property Name="presence_penalty" DataType="Decimal" DefaultValue="0.0" Description="Encourages new topics. Range: 0.0-2.0" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="120" Description="Request timeout in seconds. Range: 10-600" />
+      </Properties>
+    </Model>
+
+    <Model Name="moonshotai/Kimi-K2.7-Code" Provider="TogetherAi" InputCost="0.95" OutputCost="4.00" LoopType="Standard" DisplayName="Kimi K2.7 Code (Together)" Description="MoonshotAI Kimi K2.7 Code with vision, function calling, and JSON mode via Together AI">
+      <Properties>
+        <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-2.0" />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="4096" Description="Maximum number of tokens to generate. Range: 1-8192" />
+        <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Nucleus sampling parameter. Range: 0.0-1.0" />
+        <Property Name="frequency_penalty" DataType="Decimal" DefaultValue="0.0" Description="Reduces repetition. Range: 0.0-2.0" />
+        <Property Name="presence_penalty" DataType="Decimal" DefaultValue="0.0" Description="Encourages new topics. Range: 0.0-2.0" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="120" Description="Request timeout in seconds. Range: 10-600" />
+      </Properties>
+    </Model>
+
+    <Model Name="minimax/MiniMax-M3" Provider="TogetherAi" InputCost="0.30" OutputCost="1.20" LoopType="Standard" DisplayName="MiniMax M3 (Together)" Description="MiniMax M3 with vision, function calling, and JSON mode via Together AI">
+      <Properties>
+        <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-2.0" />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="4096" Description="Maximum number of tokens to generate. Range: 1-8192" />
+        <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Nucleus sampling parameter. Range: 0.0-1.0" />
+        <Property Name="frequency_penalty" DataType="Decimal" DefaultValue="0.0" Description="Reduces repetition. Range: 0.0-2.0" />
+        <Property Name="presence_penalty" DataType="Decimal" DefaultValue="0.0" Description="Encourages new topics. Range: 0.0-2.0" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="120" Description="Request timeout in seconds. Range: 10-600" />
+      </Properties>
+    </Model>
+  </Models>
+  <!-- Token-% compaction resolves context via TryResolveContextWindowTokens: properties with IsContextWindowTokenBudget=true, or a Property whose Name matches an entry below. max_tokens is the completion output cap, not the model context window. -->
+  <ContextWindowTokenBudgetPropertyNames>
+    <Name>context_window</Name>
+    <Name>max_context_tokens</Name>
+    <Name>context_length</Name>
+    <Name>max_input_tokens</Name>
+    <Name>max_context_length</Name>
+  </ContextWindowTokenBudgetPropertyNames>
+</LLMConfigurations>
