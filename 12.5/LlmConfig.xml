@@ -131,22 +131,18 @@
     <!-- Anthropic Claude Models -->
     <Model Name="claude-opus-5" Provider="Anthropic" InputCost="5.00" OutputCost="25.00" LoopType="Standard" DisplayName="Claude Opus 5" Description="Anthropic's most capable Opus model for complex agentic coding and enterprise work">
       <Properties>
+        <!-- Opus 5 removed temperature/top_p/top_k — API returns 400 if sent. Steer with prompting. -->
         <Property Name="context_window" DataType="Integer" DefaultValue="1000000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
-        <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-1.0" />
         <Property Name="max_tokens" DataType="Integer" DefaultValue="32000" Description="Maximum number of tokens to generate. Range: 1-128000. REQUIRED." />
-        <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Nucleus sampling parameter. Range: 0.0-1.0" />
-        <Property Name="top_k" DataType="Integer" DefaultValue="0" Description="Top-k sampling parameter. Range: 0-500" />
         <Property Name="timeout" DataType="Integer" DefaultValue="300" Description="Request timeout in seconds. Range: 10-1800" />
       </Properties>
     </Model>
 
-    <Model Name="claude-sonnet-5" Provider="Anthropic" InputCost="3.00" OutputCost="15.00" LoopType="Standard" IsEnabledByDefault="true" DisplayName="Claude Sonnet 5" Description="Best speed/intelligence balance in Sonnet tier - near-Opus quality on coding and agentic work">
+    <Model Name="claude-sonnet-5" Provider="Anthropic" InputCost="3.00" OutputCost="15.00" LoopType="Standard" DisplayName="Claude Sonnet 5" Description="Best speed/intelligence balance in Sonnet tier - near-Opus quality on coding and agentic work">
       <Properties>
+        <!-- Sonnet 5 rejects non-default temperature/top_p/top_k with 400. Omit them; steer with prompting. -->
         <Property Name="context_window" DataType="Integer" DefaultValue="1000000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
-        <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-1.0" />
         <Property Name="max_tokens" DataType="Integer" DefaultValue="32000" Description="Maximum number of tokens to generate. Range: 1-128000. REQUIRED." />
-        <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Nucleus sampling parameter. Range: 0.0-1.0" />
-        <Property Name="top_k" DataType="Integer" DefaultValue="0" Description="Top-k sampling parameter. Range: 0-500" />
         <Property Name="timeout" DataType="Integer" DefaultValue="300" Description="Request timeout in seconds. Range: 10-1800" />
       </Properties>
     </Model>
