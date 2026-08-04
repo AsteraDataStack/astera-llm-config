@@ -344,7 +344,7 @@
       </Properties>
     </Model>
 
-    <Model Name="moonshotai/Kimi-K3" Provider="TogetherAi" InputCost="3.00" OutputCost="15.00" LoopType="Standard" SupportsReasoning="true" DisplayName="Kimi K3 (Together)" Description="MoonshotAI Kimi K3 — 2.8T MoE with vision, function calling, and reasoning; 1M context via Together AI">
+    <Model Name="moonshotai/Kimi-K3" Provider="TogetherAi" InputCost="3.00" OutputCost="15.00" LoopType="Standard" DisplayName="Kimi K3 (Together)" Description="MoonshotAI Kimi K3 — 2.8T MoE with vision, function calling, and reasoning; 1M context via Together AI">
       <Properties>
         <Property Name="context_window" DataType="Integer" DefaultValue="1000000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
         <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-2.0" />
