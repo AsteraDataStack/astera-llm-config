@@ -344,6 +344,18 @@
       </Properties>
     </Model>
 
+    <Model Name="moonshotai/Kimi-K3" Provider="TogetherAi" InputCost="3.00" OutputCost="15.00" LoopType="Standard" SupportsReasoning="true" DisplayName="Kimi K3 (Together)" Description="MoonshotAI Kimi K3 — 2.8T MoE with vision, function calling, and reasoning; 1M context via Together AI">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="1000000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
+        <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-2.0" />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="4096" Description="Maximum number of tokens to generate. Range: 1-8192" />
+        <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Nucleus sampling parameter. Range: 0.0-1.0" />
+        <Property Name="frequency_penalty" DataType="Decimal" DefaultValue="0.0" Description="Reduces repetition. Range: 0.0-2.0" />
+        <Property Name="presence_penalty" DataType="Decimal" DefaultValue="0.0" Description="Encourages new topics. Range: 0.0-2.0" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="180" Description="Request timeout in seconds. Range: 10-600" />
+      </Properties>
+    </Model>
+
     <Model Name="minimax/MiniMax-M3" Provider="TogetherAi" InputCost="0.30" OutputCost="1.20" LoopType="Standard" DisplayName="MiniMax M3 (Together)" Description="MiniMax M3 with vision, function calling, and JSON mode via Together AI">
       <Properties>
         <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-2.0" />
