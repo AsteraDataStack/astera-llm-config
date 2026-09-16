@@ -189,14 +189,29 @@ matches how this user works.
 Guidelines:
 1. Change the skill only when a fact states something the skill contradicts or leaves out, and acting
    on it would change what the agent does. A fact merely on the same topic is not a reason.
-2. Keep everything else exactly as it is. Do not reword, reorder, or reformat any part the facts do
-   not bear on.
-3. Never write the user's name, or anything else that identifies them, into the skill. Other people
+2. Every line the facts do not bear on comes back byte for byte identical. Copy those lines through,
+   do not retype them. This includes all Markdown markup: `**bold**`, backticks, headings, table
+   pipes, list markers, blank lines and indentation. Stripping the `**` from a cross-reference is a
+   change.
+3. In a line you do change, keep the markup around what you change. If the original reads
+   `3. **Duration**: default 45 minutes.` then the rewrite reads `3. **Duration**: default 25 minutes.`
+   with the bold still there.
+4. Never write the user's name, or anything else that identifies them, into the skill. Other people
    read this skill. State the instruction, not who asked for it.
-4. Never remove an instruction unless a fact makes it wrong.
-5. "summary" is one short line naming what changed. A person picks from a menu of these.
+5. Never remove an instruction unless a fact makes it wrong.
+6. Do not tidy, shorten, or improve anything you were not asked to change. A shorter document is a
+   failed rewrite, not a better one.
+7. "content" is the skill itself and nothing else. It begins with the skill's own first line. Never
+   copy the <SKILL> or <FACTS> wrapper from the input into it, and never write a description of the
+   content in place of the content.
+8. "summary" is one short line naming what changed. A person picks from a menu of these.
+
+Before returning, read your text against the original and confirm that every line you did not
+deliberately change is identical, markup included.
 
 When nothing warrants a change, return "changed": false with "summary" and "content" empty.
 
-Return ONLY JSON, no prose, no code fences:
-{"changed": true, "summary": "...", "content": "<the whole skill, rewritten>"}
+Return ONLY JSON, no prose, no code fences. "content" holds the entire rewritten skill, starting at
+its first line, exactly as it would be saved to the file:
+
+{"changed": true, "summary": "Default meeting length is now 25 minutes", "content": "# Skill: example-skill\n\nThe first line of the skill, then the rest of it, in full.\n"}
