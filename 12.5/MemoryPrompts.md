@@ -26,7 +26,7 @@ You maintain long-term memory about the user. Extract durable facts about the US
 Guidelines:
 1. Extract only facts about the user that stay true beyond this conversation: preferences, role, projects, constraints, relationships, recurring context.
 2. Ignore assistant explanations, one-off task details, and anything only relevant right now. Assistant turns are context only: never extract something only the assistant asserted, because it is often repeating temporary session context (the user's email, role, timezone) rather than anything the user told you.
-3. Each fact must be one self-contained sentence, understandable without the conversation.
+3. Each fact must be one self-contained sentence, understandable without the conversation. Always write it about "the user", never about them by name, even when the conversation uses their name. A name reads as a different subject from every other stored fact, so the same fact gets stored twice.
 4. key: a short snake_case label for the fact's topic (e.g. "preferred_database").
 5. confidence: 0.0-1.0, how certain you are the fact is true and durable. Anything below {MinConfidence} is discarded, so do not spend a slot on a guess.
 6. sources: the [n] numbers of the USER messages the fact was read from, shown to the user later as evidence. Cite only user messages that actually state it, usually one. Never cite an assistant message; a fact you cannot support from a user message must not be returned.
@@ -47,6 +47,10 @@ under-merged (the password manager pair flipped).
 -->
 
 Two statements about the same user look similar. Decide how the NEW one relates to the EXISTING one.
+
+Both statements are about that one person, however they name them. If one says "the user" and the
+other uses a personal name, those are the same subject, not two people. Judge only whether the
+claims agree.
 
 Ask one question, literally, about the exact claims made and not the general area they belong to:
 suppose the NEW statement is true of the user today. Does that make the EXISTING statement false,
@@ -75,6 +79,7 @@ Examples:
 - "manager is P" then "mentors Q": different roles, both hold -> NEW
 - "works at company C" then "works at company C as a role": same claim plus detail -> NEW
 - "lives in city A" then "lives in city A" -> DUPLICATE
+- "<name> values privacy" then "the user values privacy": one person, same claim -> DUPLICATE
 
 Return ONLY JSON of the shape
 {"reason": "...", "contradicts": true, "verdict": "UPDATE"}
@@ -86,6 +91,11 @@ Return ONLY JSON of the shape
 Tokens: {ExistingContent}, {NewContent}. This is the input field, not the instructions, and it
 restates the rule on purpose: instructions travel as a separate field, and the borderline pairs came
 back NEW when the rule lived only there.
+
+All three outcomes have to be named here. This asked "does it make the existing one false, or can
+both hold at once", which is binary and offers no way to say DUPLICATE: a restatement answers "both
+hold" and was filed as a separate memory every time. That is how one fact got stored twice, once
+from extraction and once from the SaveMemory tool.
 -->
 
 <EXISTING_MEMORY>
@@ -95,4 +105,98 @@ back NEW when the rule lived only there.
 {NewContent}
 </NEW_FACT>
 
-Suppose the new statement is true of the user today: does it make the existing one false (UPDATE), or can both hold at once (NEW)? Judge the exact claims, not the area they share.
+Both statements are about one person, however each names them: a personal name and "the user" are
+the same subject, not two people.
+
+Suppose the new statement is true of the user today. Choose one:
+- it makes the existing statement false: UPDATE
+- it makes the same claim and adds nothing worth keeping: DUPLICATE
+- both are true and each says something the other does not: NEW
+
+Judge the exact claims, not the area they share.
+
+## memory.scenario-consolidation
+
+<!--
+No tokens: the atoms and the existing scenarios travel as the input field, so a {Token} here is an
+editing mistake and is refused as one. The JSON shape is matched against ConsolidationPlan in code,
+and the A1/S1 labels are generated there too, so renaming either breaks every plan silently.
+-->
+
+The atoms are facts remembered about one user. Scenarios are theme-level groupings of those facts
+(a project, a preference area, a recurring situation). Put every atom into exactly one scenario.
+
+Return one entry per scenario in "groups". A group is either:
+- an existing scenario: "existing" is its label (S1, S2, ...), "title" is "", and "summary" is a rewritten
+  summary only when the newly grouped atoms no longer fit the current one, otherwise "";
+- a new scenario: "existing" is null, "title" is 2-6 words, "summary" is 1-3 sentences covering its atoms.
+
+Guidelines:
+1. Prefer existing scenarios. Create a new one only for a clearly distinct theme with at least 2 atoms.
+2. Every atom label (A1, A2, ...) appears in exactly one group's "atoms". Use only labels from the lists.
+3. A new scenario is defined by the title and summary in its own group. Do not refer to scenarios that are not in the list.
+4. When EXISTING_SCENARIOS is "(none yet)" there is nothing to reference: every group must have "existing": null with its own title and summary.
+
+Return ONLY JSON, no prose, no code fences:
+{"groups": [{"existing": "S1", "title": "", "summary": "", "atoms": ["A1", "A4"]}, {"existing": null, "title": "...", "summary": "...", "atoms": ["A2", "A3"]}]}
+
+## memory.scenario-summary
+
+<!--
+No tokens: the theme and its remaining facts travel as the input field. This runs after a fact is
+deleted, so the rewritten summary must not restate anything the deleted fact carried. Adding
+anything the facts do not state puts a memory back that the user asked to remove.
+-->
+
+Write the summary for one theme of facts remembered about a user. Two or three sentences,
+third person ("The user ..."), covering only what the facts state; infer nothing and add
+nothing. Return the summary as plain text, nothing else.
+
+## memory.persona-synthesis
+
+<!--
+No tokens: the current profile and the scenarios travel as the input field. The scenarios are the
+only source of truth on purpose. A profile that keeps a trait no scenario still supports is how a
+deleted fact survives deletion, one layer up.
+-->
+
+The scenarios summarize everything remembered about one user. Produce an updated user profile.
+
+Guidelines:
+1. The scenarios are the only source of truth. Keep wording from the current profile where a
+   scenario still supports it; drop anything the scenarios no longer support, even if the
+   current profile states it. Never add a trait no scenario mentions.
+2. Cover who the user is, what they work on, and their durable preferences and constraints.
+3. Plain prose, third person, at most 150 words.
+4. No headings, no bullet points, no meta commentary.
+
+Return ONLY the profile text, no prose around it.
+
+## memory.skill-suggestion
+
+<!--
+No tokens: the skill and the user's facts travel as the input field, so a {Token} here is an editing
+mistake and is refused as one. The JSON shape is matched against SuggestionResult in code.
+
+Rule 3 is not style advice. The suggestion is private to the user it was built from, but applying it
+writes the shared .skl that everyone reads, so anything identifying in the body leaks at that point.
+-->
+
+A skill is a written instruction document an AI agent follows when it does a task. You are given one
+skill and a set of facts remembered about one user. Decide whether the skill should change so that it
+matches how this user works.
+
+Guidelines:
+1. Change the skill only when a fact states something the skill contradicts or leaves out, and acting
+   on it would change what the agent does. A fact merely on the same topic is not a reason.
+2. Keep everything else exactly as it is. Do not reword, reorder, or reformat any part the facts do
+   not bear on.
+3. Never write the user's name, or anything else that identifies them, into the skill. Other people
+   read this skill. State the instruction, not who asked for it.
+4. Never remove an instruction unless a fact makes it wrong.
+5. "summary" is one short line naming what changed. A person picks from a menu of these.
+
+When nothing warrants a change, return "changed": false with "summary" and "content" empty.
+
+Return ONLY JSON, no prose, no code fences:
+{"changed": true, "summary": "...", "content": "<the whole skill, rewritten>"}
