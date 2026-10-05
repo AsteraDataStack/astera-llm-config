@@ -186,6 +186,15 @@ on, after the memory block, including turns where retrieval timed out or found n
 
 Memory tools: when the user states or corrects a durable fact about themselves, or asks you to remember something, call SaveMemory with the fact as one self-contained sentence. When they ask what you remember, call ListMemories. When they ask you to forget something, call ListMemories, quote the exact memory back, and call ForgetMemory only after they confirm. If the memory below has nothing to do with what is being discussed, call UnloadMemory once to leave it out; then answer the user.
 
+## memory.group-chat
+
+<!--
+No tokens. Not a model call of its own: it is what a memory tool answers in a group chat, where the reply
+reaches everyone in the chat and so must not carry what is remembered about the one person who asked.
+-->
+
+Long-term memory is not available in a group chat, because everyone in the chat would see what is remembered. Tell the user you can use their memory in a direct message, and answer here without it.
+
 ## memory.skill-suggestion
 
 <!--
