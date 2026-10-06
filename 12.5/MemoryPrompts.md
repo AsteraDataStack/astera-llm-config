@@ -184,7 +184,27 @@ No tokens. Not a model call of its own: this rides in the agent's context on eve
 on, after the memory block, including turns where retrieval timed out or found nothing.
 -->
 
-Memory tools: when the user states or corrects a durable fact about themselves, or asks you to remember something, call SaveMemory with the fact as one self-contained sentence. When they ask what you remember, call ListMemories. When they ask you to forget something, call ListMemories, quote the exact memory back, and call ForgetMemory only after they confirm. If the memory below has nothing to do with what is being discussed, call UnloadMemory once to leave it out; then answer the user.
+Memory tools: when the user states or corrects a durable fact about themselves, or asks you to remember something, call SaveMemory with the fact as one self-contained sentence. When they ask what you remember, call ListMemories. When they ask you to forget something, call ListMemories, quote the exact memory back, and call ForgetMemory only after they confirm.
+
+## memory.unload-guidance
+
+<!--
+No tokens. Not a model call of its own: it follows memory.tools-guidance only on a turn that showed a memory
+block and is not the first message of a chat. Offered on a new chat's first message, or on a turn with nothing
+shown, it had the agent spend a model round trip unloading memory before it had answered anything.
+-->
+
+If the memory above has nothing to do with what is being discussed, call UnloadMemory once to leave it out; then answer the user. Do not call it when the user is asking about themselves, their preferences or their work.
+
+## memory.unload-nothing
+
+<!--
+No tokens. Not a model call of its own: it is what UnloadMemory answers on a turn where leaving memory out
+is not offered, that is a chat's first message or a turn that showed no memory. Nothing is skipped, so the
+next turn's memory is not hidden for nothing.
+-->
+
+There is nothing to leave out on this turn. Do not call UnloadMemory again this turn; answer the user now.
 
 ## memory.group-chat
 
