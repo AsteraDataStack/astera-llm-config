@@ -186,7 +186,7 @@
       </Properties>
     </Model>
 
-    <Model Name="claude-haiku-4-5-20251001" Provider="Anthropic" InputCost="0.80" OutputCost="4.00" LoopType="Standard" SupportsVision="true" DisplayName="Claude Haiku 4.5" Description="Fast and affordable Claude model">
+    <Model Name="claude-haiku-4-5-20251001" Provider="Anthropic" InputCost="0.80" OutputCost="4.00" LoopType="Standard" ReplacementModel="Anthropic.claude-haiku-4-5" SupportsVision="true" DisplayName="Claude Haiku 4.5" Description="Fast and affordable Claude model">
       <Properties>
         <Property Name="context_window" DataType="Integer" DefaultValue="200000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
         <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-1.0" />
