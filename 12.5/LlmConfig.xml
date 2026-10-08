@@ -11,6 +11,38 @@
   </Defaults>
   <Models>
     <!-- OpenAI Models -->
+    <Model Name="gpt-6.1-sol" Provider="OpenAi" InputCost="2.00" OutputCost="10.00" LoopType="ResponsesApi" SupportsReasoning="true" EnabledByDefault="true" DisplayName="GPT-6.1 Sol" Description="Complex coding and agentic work at a lower cost; base prices apply up to 272000 input tokens">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="1050000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="32000" Description="Maximum number of tokens to generate. Range: 1-128000" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="300" Description="Request timeout in seconds. Range: 10-1800" />
+      </Properties>
+    </Model>
+
+    <Model Name="gpt-6-astra" Provider="OpenAi" InputCost="10.00" OutputCost="50.00" LoopType="ResponsesApi" SupportsReasoning="true" EnabledByDefault="true" DisplayName="GPT-6 Astra" Description="Advanced reasoning and long-running agentic work; base prices apply up to 272000 input tokens">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="1050000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="32000" Description="Maximum number of tokens to generate. Range: 1-128000" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="300" Description="Request timeout in seconds. Range: 10-1800" />
+      </Properties>
+    </Model>
+
+    <Model Name="gpt-6-sol" Provider="OpenAi" InputCost="2.00" OutputCost="10.00" LoopType="ResponsesApi" SupportsReasoning="true" EnabledByDefault="true" DisplayName="GPT-6 Sol" Description="GPT-6 coding and agentic model; base prices apply up to 272000 input tokens">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="1050000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="32000" Description="Maximum number of tokens to generate. Range: 1-128000" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="300" Description="Request timeout in seconds. Range: 10-1800" />
+      </Properties>
+    </Model>
+
+    <Model Name="gpt-6-luna" Provider="OpenAi" InputCost="0.10" OutputCost="0.50" LoopType="ResponsesApi" SupportsReasoning="true" EnabledByDefault="true" DisplayName="GPT-6 Luna" Description="Efficient model for high-volume tasks; base prices apply up to 272000 input tokens">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="1050000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="8192" Description="Maximum number of tokens to generate. Range: 1-128000" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="180" Description="Request timeout in seconds. Range: 10-1800" />
+      </Properties>
+    </Model>
+
     <Model Name="gpt-4o" Provider="OpenAi" InputCost="2.50" OutputCost="10.00" LoopType="ResponsesApi" ReplacementModel="OpenAi.gpt-5" SupportsVision="true" DisplayName="GPT-4o" Description="Deprecated GPT-4o model retained for compatibility">
       <Properties>
         <Property Name="context_window" DataType="Integer" DefaultValue="128000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
@@ -126,6 +158,38 @@
     </Model>
 
     <!-- Anthropic Claude Models -->
+    <Model Name="claude-fable-5-1" Provider="Anthropic" InputCost="10.00" OutputCost="50.00" LoopType="Standard" SupportsReasoning="true" EnabledByDefault="true" SupportsVision="true" DisplayName="Claude Fable 5.1" Description="Demanding reasoning and long-running agentic work with always-on adaptive thinking">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="1000000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="32000" Description="Maximum number of tokens to generate. Range: 1-128000. REQUIRED." />
+        <Property Name="timeout" DataType="Integer" DefaultValue="300" Description="Request timeout in seconds. Range: 10-1800" />
+      </Properties>
+    </Model>
+
+    <Model Name="claude-opus-5-5" Provider="Anthropic" InputCost="4.00" OutputCost="20.00" LoopType="Standard" SupportsReasoning="true" EnabledByDefault="true" SupportsVision="true" DisplayName="Claude Opus 5.5" Description="Complex coding and knowledge work with always-on adaptive thinking">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="1000000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="32000" Description="Maximum number of tokens to generate. Range: 1-128000. REQUIRED." />
+        <Property Name="timeout" DataType="Integer" DefaultValue="300" Description="Request timeout in seconds. Range: 10-1800" />
+      </Properties>
+    </Model>
+
+    <Model Name="claude-sonnet-5-5" Provider="Anthropic" InputCost="2.00" OutputCost="10.00" LoopType="Standard" SupportsReasoning="true" EnabledByDefault="true" SupportsVision="true" DisplayName="Claude Sonnet 5.5" Description="Balanced speed and intelligence for coding and agentic work">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="1000000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="32000" Description="Maximum number of tokens to generate. Range: 1-128000. REQUIRED." />
+        <Property Name="timeout" DataType="Integer" DefaultValue="300" Description="Request timeout in seconds. Range: 10-1800" />
+      </Properties>
+    </Model>
+
+    <Model Name="claude-haiku-5-5" Provider="Anthropic" InputCost="0.10" OutputCost="0.50" LoopType="Standard" SupportsReasoning="true" EnabledByDefault="true" DisplayName="Claude Haiku 5.5" Description="Fast model for classification, extraction and routing; base prices apply up to 100000 input tokens">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="1000000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="8192" Description="Maximum number of tokens to generate. Range: 1-128000. REQUIRED." />
+        <Property Name="timeout" DataType="Integer" DefaultValue="180" Description="Request timeout in seconds. Range: 10-1800" />
+      </Properties>
+    </Model>
+
     <Model Name="claude-fable-5" Provider="Anthropic" InputCost="10.00" OutputCost="50.00" LoopType="Standard" EnabledByDefault="true" SupportsVision="true" DisplayName="Claude Fable 5" Description="Anthropic's most capable model for demanding reasoning and long-horizon agentic work">
       <Properties>
         <!-- Fable 5 rejects non-default temperature/top_p/top_k with 400. Omit them; steer with prompting. -->
@@ -254,6 +318,20 @@
 
     <!-- Curated OpenAI-compatible BYO providers. They remain disabled by default because they
          require a scoped provider override or an explicit workspace LLM Connection. -->
+    <Model Name="deepseek-flash" Provider="DeepSeek" InputCost="0.30" OutputCost="1.20" LoopType="Standard" SupportsReasoning="true" DisplayName="DeepSeek V4.1 Flash" Description="DeepSeek's current multimodal Flash model; peak-hour prices are shown, with 50% lower off-peak prices">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="1000000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens." />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="8192" Description="Maximum response tokens. Range: 1-384000" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="180" Description="Request timeout in seconds. Range: 10-1800" />
+      </Properties>
+    </Model>
+    <Model Name="deepseek-v4-pro" Provider="DeepSeek" InputCost="1.32" OutputCost="3.96" LoopType="Standard" SupportsReasoning="true" DisplayName="DeepSeek V4 Pro" Description="DeepSeek V4 Pro through its direct API; peak-hour prices are shown, with 50% lower off-peak prices">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="1000000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens." />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="8192" Description="Maximum response tokens. Range: 1-384000" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="180" Description="Request timeout in seconds. Range: 10-1800" />
+      </Properties>
+    </Model>
     <Model Name="deepseek-chat" Provider="DeepSeek" InputCost="0.28" OutputCost="0.42" LoopType="Standard" DisplayName="DeepSeek Chat" Description="DeepSeek's OpenAI-compatible chat model">
       <Properties>
         <Property Name="context_window" DataType="Integer" DefaultValue="64000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens." />
@@ -272,7 +350,7 @@
         <Property Name="timeout" DataType="Integer" DefaultValue="120" Description="Request timeout in seconds." />
       </Properties>
     </Model>
-    <Model Name="deepseek-ai/DeepSeek-V4-Pro" Provider="Together" InputCost="1.74" OutputCost="3.48" LoopType="Standard" DisplayName="DeepSeek V4 Pro" Description="DeepSeek V4 Pro served by Together's OpenAI-compatible serverless API">
+    <Model Name="deepseek-ai/DeepSeek-V4-Pro" Provider="Together" InputCost="1.74" OutputCost="3.48" LoopType="Standard" DisplayName="DeepSeek V4 Pro (Together)" Description="DeepSeek V4 Pro served by Together's OpenAI-compatible serverless API">
       <Properties>
         <Property Name="context_window" DataType="Integer" DefaultValue="512000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens." />
         <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness." />
@@ -281,11 +359,39 @@
         <Property Name="timeout" DataType="Integer" DefaultValue="120" Description="Request timeout in seconds." />
       </Properties>
     </Model>
+    <Model Name="gemini-3.8-flash" Provider="Gemini" InputCost="1.50" OutputCost="9.00" LoopType="Standard" SupportsReasoning="true" DisplayName="Gemini 3.8 Flash" Description="Google's current stable Flash model through its OpenAI-compatible endpoint">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="1048576" IsContextWindowTokenBudget="true" Description="Model input token limit; reserved output is subtracted from this budget." />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="65536" Description="Maximum response tokens. Range: 1-65536" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="180" Description="Request timeout in seconds. Range: 10-1800" />
+      </Properties>
+    </Model>
+    <Model Name="gemini-3.5-flash-lite" Provider="Gemini" InputCost="0.30" OutputCost="2.50" LoopType="Standard" SupportsReasoning="true" DisplayName="Gemini 3.5 Flash-Lite" Description="Google's efficient stable model for high-volume agentic and data-processing tasks">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="1048576" IsContextWindowTokenBudget="true" Description="Model input token limit; reserved output is subtracted from this budget." />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="8192" Description="Maximum response tokens. Range: 1-65536" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="120" Description="Request timeout in seconds. Range: 10-1800" />
+      </Properties>
+    </Model>
     <Model Name="gemini-3.6-flash" Provider="Gemini" InputCost="1.50" OutputCost="7.50" LoopType="Standard" SupportsReasoning="true" SupportsVision="true" DisplayName="Gemini 3.6 Flash" Description="Google's current GA Flash model">
       <Properties>
         <Property Name="context_window" DataType="Integer" DefaultValue="1048576" IsContextWindowTokenBudget="true" Description="Total model context window in tokens." />
         <Property Name="max_tokens" DataType="Integer" DefaultValue="65536" Description="Maximum response tokens." />
         <Property Name="timeout" DataType="Integer" DefaultValue="120" Description="Request timeout in seconds." />
+      </Properties>
+    </Model>
+    <Model Name="deepseek-ai/DeepSeek-V4.1-Flash" Provider="Together" InputCost="0.30" OutputCost="1.20" LoopType="Standard" SupportsReasoning="true" DisplayName="DeepSeek V4.1 Flash (Together)" Description="DeepSeek V4.1 Flash served by Together's OpenAI-compatible serverless API">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="1000000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens." />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="8192" Description="Maximum response tokens." />
+        <Property Name="timeout" DataType="Integer" DefaultValue="180" Description="Request timeout in seconds. Range: 10-1800" />
+      </Properties>
+    </Model>
+    <Model Name="deepseek-ai/DeepSeek-V4-Pro-0813" Provider="Together" InputCost="1.32" OutputCost="3.96" LoopType="Standard" SupportsReasoning="true" DisplayName="DeepSeek V4 Pro 0813 (Together)" Description="DeepSeek V4 Pro 0813 served by Together's OpenAI-compatible serverless API">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="1048576" IsContextWindowTokenBudget="true" Description="Total model context window in tokens." />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="8192" Description="Maximum response tokens." />
+        <Property Name="timeout" DataType="Integer" DefaultValue="180" Description="Request timeout in seconds. Range: 10-1800" />
       </Properties>
     </Model>
     <Model Name="deepseek-ai/DeepSeek-V4-Flash-0731" Provider="Together" InputCost="0.14" OutputCost="0.28" LoopType="Standard" DisplayName="DeepSeek V4 Flash 0731" Description="Low-latency DeepSeek V4 Flash model served by Together's OpenAI-compatible serverless API">
