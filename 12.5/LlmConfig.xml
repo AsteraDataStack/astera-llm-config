@@ -3,6 +3,7 @@
   <Defaults>
     <Default Role="Agent" Model="Anthropic.claude-sonnet-5" />
     <Default Role="Summarization" Model="OpenAi.gpt-5-nano" />
+	<Default Role="Summarization" Provider="Anthropic" Model="Anthropic.claude-haiku-4-5" />
     <Default Role="Generation" Model="OpenAi.gpt-5" />
     <Default Role="Completion" Provider="OpenAi" Model="OpenAi.gpt-5" />
     <Default Role="Completion" Provider="Anthropic" Model="Anthropic.claude-sonnet-5" />
