@@ -273,7 +273,7 @@
       </Properties>
     </Model>
 
-    <Model Name="claude-opus-4-1-20250805" Provider="Anthropic" InputCost="15.00" OutputCost="75.00" LoopType="Standard" SupportsVision="true" DisplayName="Claude Opus 4.1" Description="Previous generation Opus model">
+    <Model Name="claude-opus-4-1-20250805" Provider="Anthropic" InputCost="15.00" OutputCost="75.00" LoopType="Standard" ReplacementModel="Anthropic.claude-opus-5-5" SupportsVision="true" DisplayName="Claude Opus 4.1" Description="Previous generation Opus model">
       <Properties>
         <Property Name="context_window" DataType="Integer" DefaultValue="200000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
         <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-1.0" />
@@ -284,7 +284,7 @@
       </Properties>
     </Model>
 
-    <Model Name="claude-sonnet-4-20250514" Provider="Anthropic" InputCost="3.00" OutputCost="15.00" LoopType="Standard" SupportsVision="true" DisplayName="Claude Sonnet 4" Description="Balanced performance and intelligence">
+    <Model Name="claude-sonnet-4-20250514" Provider="Anthropic" InputCost="3.00" OutputCost="15.00" LoopType="Standard" ReplacementModel="Anthropic.claude-sonnet-5-5" SupportsVision="true" DisplayName="Claude Sonnet 4" Description="Balanced performance and intelligence">
       <Properties>
         <Property Name="context_window" DataType="Integer" DefaultValue="200000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
         <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-1.0" />
@@ -295,7 +295,7 @@
       </Properties>
     </Model>
 
-    <Model Name="claude-3-7-sonnet-20250219" Provider="Anthropic" InputCost="3.00" OutputCost="15.00" LoopType="Standard" SupportsVision="true" DisplayName="Claude 3.7 Sonnet" Description="Enhanced Sonnet model">
+    <Model Name="claude-3-7-sonnet-20250219" Provider="Anthropic" InputCost="3.00" OutputCost="15.00" LoopType="Standard" ReplacementModel="Anthropic.claude-sonnet-5-5" SupportsVision="true" DisplayName="Claude 3.7 Sonnet" Description="Enhanced Sonnet model">
       <Properties>
         <Property Name="context_window" DataType="Integer" DefaultValue="200000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
         <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-1.0" />
@@ -306,7 +306,7 @@
       </Properties>
     </Model>
 
-    <Model Name="claude-3-5-sonnet-20240620" Provider="Anthropic" InputCost="3.00" OutputCost="15.00" LoopType="Standard" SupportsVision="true" DisplayName="Claude 3.5 Sonnet" Description="Previous generation Sonnet">
+    <Model Name="claude-3-5-sonnet-20240620" Provider="Anthropic" InputCost="3.00" OutputCost="15.00" LoopType="Standard" ReplacementModel="Anthropic.claude-sonnet-5-5" SupportsVision="true" DisplayName="Claude 3.5 Sonnet" Description="Previous generation Sonnet">
       <Properties>
         <Property Name="context_window" DataType="Integer" DefaultValue="200000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
         <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-1.0" />
