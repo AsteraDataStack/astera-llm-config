@@ -209,7 +209,7 @@
       </Properties>
     </Model>
 
-    <Model Name="claude-sonnet-5" Provider="Anthropic" InputCost="3.00" OutputCost="15.00" LoopType="Standard" EnabledByDefault="true" SupportsVision="true" DisplayName="Claude Sonnet 5" Description="Best speed/intelligence balance in Sonnet tier - near-Opus quality on coding and agentic work">
+    <Model Name="claude-sonnet-5" Provider="Anthropic" InputCost="2.00" OutputCost="10.00" LoopType="Standard" EnabledByDefault="true" SupportsVision="true" DisplayName="Claude Sonnet 5" Description="Best speed/intelligence balance in Sonnet tier - near-Opus quality on coding and agentic work">
       <Properties>
         <!-- Sonnet 5 rejects non-default temperature/top_p/top_k with 400. Omit them; steer with prompting. -->
         <Property Name="context_window" DataType="Integer" DefaultValue="1000000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
@@ -229,7 +229,7 @@
       </Properties>
     </Model>
 
-    <Model Name="claude-opus-4-6" Provider="Anthropic" InputCost="15.00" OutputCost="75.00" LoopType="Standard" SupportsVision="true" DisplayName="Claude Opus 4.6" Description="Most capable Claude model for complex tasks">
+    <Model Name="claude-opus-4-6" Provider="Anthropic" InputCost="5.00" OutputCost="25.00" LoopType="Standard" SupportsVision="true" DisplayName="Claude Opus 4.6" Description="Most capable Claude model for complex tasks">
       <Properties>
         <Property Name="context_window" DataType="Integer" DefaultValue="200000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
         <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-1.0" />
@@ -251,7 +251,7 @@
       </Properties>
     </Model>
 
-    <Model Name="claude-haiku-4-5-20251001" Provider="Anthropic" InputCost="0.80" OutputCost="4.00" LoopType="Standard" ReplacementModel="Anthropic.claude-haiku-4-5" SupportsVision="true" DisplayName="Claude Haiku 4.5" Description="Fast and affordable Claude model">
+    <Model Name="claude-haiku-4-5-20251001" Provider="Anthropic" InputCost="1.00" OutputCost="5.00" LoopType="Standard" ReplacementModel="Anthropic.claude-haiku-4-5" SupportsVision="true" DisplayName="Claude Haiku 4.5" Description="Fast and affordable Claude model">
       <Properties>
         <Property Name="context_window" DataType="Integer" DefaultValue="200000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
         <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-1.0" />
