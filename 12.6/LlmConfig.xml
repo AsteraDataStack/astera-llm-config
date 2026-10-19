@@ -68,7 +68,7 @@
       </Properties>
     </Model>
 
-    <Model Name="o4-mini" Provider="OpenAi" InputCost="3.00" OutputCost="12.00" LoopType="ResponsesApi" SupportsReasoning="true" SupportsVision="true" DisplayName="O4 Mini" Description="Reasoning model optimized for complex problems">
+    <Model Name="o4-mini" Provider="OpenAi" InputCost="1.10" OutputCost="4.40" LoopType="ResponsesApi" SupportsReasoning="true" SupportsVision="true" DisplayName="O4 Mini" Description="Reasoning model optimized for complex problems">
       <Properties>
         <!-- Reasoning models reject temperature/top_p — API returns 400. https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/reasoning -->
         <Property Name="context_window" DataType="Integer" DefaultValue="200000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
@@ -86,7 +86,7 @@
       </Properties>
     </Model>
 
-    <Model Name="o3" Provider="OpenAi" InputCost="15.00" OutputCost="60.00" LoopType="ResponsesApi" SupportsReasoning="true" SupportsVision="true" DisplayName="O3" Description="Advanced reasoning model for complex tasks">
+    <Model Name="o3" Provider="OpenAi" InputCost="2.00" OutputCost="8.00" LoopType="ResponsesApi" SupportsReasoning="true" SupportsVision="true" DisplayName="O3" Description="Advanced reasoning model for complex tasks">
       <Properties>
         <!-- Reasoning models reject temperature/top_p — API returns 400. https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/reasoning -->
         <Property Name="context_window" DataType="Integer" DefaultValue="200000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
@@ -119,7 +119,7 @@
       </Properties>
     </Model>
 
-    <Model Name="gpt-4.1-nano" Provider="OpenAi" InputCost="0.25" OutputCost="1.00" LoopType="ResponsesApi" SupportsVision="true" DisplayName="GPT-4.1 Nano" Description="Ultra-efficient GPT-4.1 for simple tasks">
+    <Model Name="gpt-4.1-nano" Provider="OpenAi" InputCost="0.10" OutputCost="0.40" LoopType="ResponsesApi" SupportsVision="true" DisplayName="GPT-4.1 Nano" Description="Ultra-efficient GPT-4.1 for simple tasks">
       <Properties>
         <Property Name="context_window" DataType="Integer" DefaultValue="128000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
         <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-2.0" />
