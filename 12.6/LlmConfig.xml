@@ -155,7 +155,7 @@
       </Properties>
     </Model>
 
-    <Model Name="gpt-5" Provider="OpenAi" InputCost="1.25" OutputCost="10.00" LoopType="ResponsesApi" ReplacementModel="OpenAi.gpt-5.6-sol" SupportsReasoning="true" SupportsVision="true" EnabledByDefault="true" DisplayName="GPT-5" Description="Deprecated; retained for compatibility. Next generation GPT model with improved capabilities">
+    <Model Name="gpt-5" Provider="OpenAi" InputCost="1.25" OutputCost="10.00" LoopType="ResponsesApi" ReplacementModel="OpenAi.gpt-5.6-sol" SupportsReasoning="true" SupportsVision="true" DisplayName="GPT-5" Description="Deprecated; retained for compatibility. Next generation GPT model with improved capabilities">
       <Properties>
         <!-- Reasoning models reject temperature/top_p/frequency_penalty/presence_penalty — API returns 400. https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/reasoning -->
         <Property Name="context_window" DataType="Integer" DefaultValue="256000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
@@ -164,7 +164,7 @@
       </Properties>
     </Model>
 
-    <Model Name="gpt-5-mini" Provider="OpenAi" InputCost="0.25" OutputCost="2.00" LoopType="ResponsesApi" ReplacementModel="OpenAi.gpt-5.6-terra" SupportsReasoning="true" EnabledByDefault="true" SupportsVision="true" DisplayName="GPT-5 Mini" Description="Deprecated; retained for compatibility. Efficient GPT-5 variant">
+    <Model Name="gpt-5-mini" Provider="OpenAi" InputCost="0.25" OutputCost="2.00" LoopType="ResponsesApi" ReplacementModel="OpenAi.gpt-5.6-terra" SupportsReasoning="true" SupportsVision="true" DisplayName="GPT-5 Mini" Description="Deprecated; retained for compatibility. Efficient GPT-5 variant">
       <Properties>
         <!-- Reasoning models reject temperature/top_p/frequency_penalty/presence_penalty — API returns 400. https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/reasoning -->
         <Property Name="context_window" DataType="Integer" DefaultValue="256000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
@@ -173,7 +173,7 @@
       </Properties>
     </Model>
 
-    <Model Name="gpt-5-nano" Provider="OpenAi" InputCost="0.05" OutputCost="0.40" LoopType="ResponsesApi" ReplacementModel="OpenAi.gpt-5.6-luna" SupportsReasoning="true" EnabledByDefault="true" SupportsVision="true" DisplayName="GPT-5 Nano" Description="Deprecated; retained for compatibility. Ultra-efficient GPT-5 for simple tasks">
+    <Model Name="gpt-5-nano" Provider="OpenAi" InputCost="0.05" OutputCost="0.40" LoopType="ResponsesApi" ReplacementModel="OpenAi.gpt-5.6-luna" SupportsReasoning="true" SupportsVision="true" DisplayName="GPT-5 Nano" Description="Deprecated; retained for compatibility. Ultra-efficient GPT-5 for simple tasks">
       <Properties>
         <!-- Reasoning models reject temperature/top_p/frequency_penalty/presence_penalty — API returns 400. https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/reasoning -->
         <Property Name="context_window" DataType="Integer" DefaultValue="128000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
@@ -224,7 +224,7 @@
       </Properties>
     </Model>
 
-    <Model Name="claude-opus-5" Provider="Anthropic" InputCost="5.00" OutputCost="25.00" LoopType="Standard" ReplacementModel="Anthropic.claude-opus-5-5" SupportsVision="true" EnabledByDefault="true" DisplayName="Claude Opus 5" Description="Deprecated; retained for compatibility. Anthropic's most capable Opus model for complex agentic coding and enterprise work">
+    <Model Name="claude-opus-5" Provider="Anthropic" InputCost="5.00" OutputCost="25.00" LoopType="Standard" ReplacementModel="Anthropic.claude-opus-5-5" SupportsVision="true" DisplayName="Claude Opus 5" Description="Deprecated; retained for compatibility. Anthropic's most capable Opus model for complex agentic coding and enterprise work">
       <Properties>
         <!-- Opus 5 removed temperature/top_p/top_k — API returns 400 if sent. Steer with prompting. -->
         <Property Name="context_window" DataType="Integer" DefaultValue="1000000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
@@ -242,7 +242,7 @@
       </Properties>
     </Model>
 
-    <Model Name="claude-haiku-4-5" Provider="Anthropic" InputCost="1.00" OutputCost="5.00" LoopType="Standard" ReplacementModel="Anthropic.claude-haiku-5-5" EnabledByDefault="true" SupportsVision="true" DisplayName="Claude Haiku 4.5" Description="Deprecated; retained for compatibility. Fastest and most cost-effective Claude model">
+    <Model Name="claude-haiku-4-5" Provider="Anthropic" InputCost="1.00" OutputCost="5.00" LoopType="Standard" ReplacementModel="Anthropic.claude-haiku-5-5" SupportsVision="true" DisplayName="Claude Haiku 4.5" Description="Deprecated; retained for compatibility. Fastest and most cost-effective Claude model">
       <Properties>
         <Property Name="context_window" DataType="Integer" DefaultValue="200000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
         <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-1.0" />
