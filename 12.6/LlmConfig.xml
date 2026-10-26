@@ -2,13 +2,13 @@
 <LLMConfigurations SchemaVersion="2">
   <Defaults>
     <Default Role="Agent" Model="Anthropic.claude-sonnet-5" />
-    <Default Role="Summarization" Model="OpenAi.gpt-5-nano" />
-	<Default Role="Summarization" Provider="Anthropic" Model="Anthropic.claude-haiku-4-5" />
-    <Default Role="Generation" Model="OpenAi.gpt-5" />
-    <Default Role="Completion" Provider="OpenAi" Model="OpenAi.gpt-5" />
+    <Default Role="Summarization" Model="OpenAi.gpt-5.6-luna" />
+	<Default Role="Summarization" Provider="Anthropic" Model="Anthropic.claude-haiku-5-5" />
+    <Default Role="Generation" Model="OpenAi.gpt-6-sol" />
+    <Default Role="Completion" Provider="OpenAi" Model="OpenAi.gpt-6-sol" />
     <Default Role="Completion" Provider="Anthropic" Model="Anthropic.claude-sonnet-5" />
     <Default Role="Completion" Provider="Gemini" Model="Gemini.gemini-3.6-flash" />
-    <Default Role="Completion" Provider="Together" Model="Together.deepseek-ai/DeepSeek-V4-Pro" />
+    <Default Role="Completion" Provider="Together" Model="Together.deepseek-ai/DeepSeek-V4-Pro-0813" />
   </Defaults>
   <Models>
     <!-- OpenAI Models -->
@@ -44,7 +44,31 @@
       </Properties>
     </Model>
 
-    <Model Name="gpt-4o" Provider="OpenAi" InputCost="2.50" OutputCost="10.00" LoopType="ResponsesApi" ReplacementModel="OpenAi.gpt-5" SupportsVision="true" DisplayName="GPT-4o" Description="Deprecated GPT-4o model retained for compatibility">
+    <Model Name="gpt-5.6-sol" Provider="OpenAi" InputCost="4.00" OutputCost="20.00" LoopType="ResponsesApi" SupportsReasoning="true" SupportsVision="true" EnabledByDefault="true" DisplayName="GPT-5.6 Sol" Description="GPT-5.6 flagship model for complex professional work; base prices apply up to 272000 input tokens">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="1050000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="32000" Description="Maximum number of tokens to generate. Range: 1-128000" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="300" Description="Request timeout in seconds. Range: 10-1800" />
+      </Properties>
+    </Model>
+
+    <Model Name="gpt-5.6-terra" Provider="OpenAi" InputCost="2.00" OutputCost="12.00" LoopType="ResponsesApi" SupportsReasoning="true" SupportsVision="true" EnabledByDefault="true" DisplayName="GPT-5.6 Terra" Description="GPT-5.6 model that balances intelligence and cost; base prices apply up to 272000 input tokens">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="1050000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="32000" Description="Maximum number of tokens to generate. Range: 1-128000" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="300" Description="Request timeout in seconds. Range: 10-1800" />
+      </Properties>
+    </Model>
+
+    <Model Name="gpt-5.6-luna" Provider="OpenAi" InputCost="0.20" OutputCost="1.20" LoopType="ResponsesApi" SupportsReasoning="true" SupportsVision="true" EnabledByDefault="true" DisplayName="GPT-5.6 Luna" Description="GPT-5.6 budget model for high-volume work; base prices apply up to 272000 input tokens">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="1050000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="8192" Description="Maximum number of tokens to generate. Range: 1-128000" />
+        <Property Name="timeout" DataType="Integer" DefaultValue="180" Description="Request timeout in seconds. Range: 10-1800" />
+      </Properties>
+    </Model>
+
+    <Model Name="gpt-4o" Provider="OpenAi" InputCost="2.50" OutputCost="10.00" LoopType="ResponsesApi" ReplacementModel="OpenAi.gpt-6-luna" SupportsVision="true" DisplayName="GPT-4o" Description="Deprecated GPT-4o model retained for compatibility">
       <Properties>
         <Property Name="context_window" DataType="Integer" DefaultValue="128000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
         <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-2.0" />
@@ -56,7 +80,7 @@
       </Properties>
     </Model>
 
-    <Model Name="gpt-4o-mini" Provider="OpenAi" InputCost="0.15" OutputCost="0.60" LoopType="ResponsesApi" SupportsVision="true" DisplayName="GPT-4o Mini" Description="Fast and affordable model for lighter tasks">
+    <Model Name="gpt-4o-mini" Provider="OpenAi" InputCost="0.15" OutputCost="0.60" LoopType="ResponsesApi" ReplacementModel="OpenAi.gpt-6-luna" SupportsVision="true" DisplayName="GPT-4o Mini" Description="Deprecated; retained for compatibility. Fast and affordable model for lighter tasks">
       <Properties>
         <Property Name="context_window" DataType="Integer" DefaultValue="128000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
         <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-2.0" />
@@ -68,7 +92,7 @@
       </Properties>
     </Model>
 
-    <Model Name="o4-mini" Provider="OpenAi" InputCost="1.10" OutputCost="4.40" LoopType="ResponsesApi" SupportsReasoning="true" SupportsVision="true" DisplayName="O4 Mini" Description="Reasoning model optimized for complex problems">
+    <Model Name="o4-mini" Provider="OpenAi" InputCost="1.10" OutputCost="4.40" LoopType="ResponsesApi" ReplacementModel="OpenAi.gpt-5.6-terra" SupportsReasoning="true" SupportsVision="true" DisplayName="O4 Mini" Description="Deprecated; retained for compatibility. Reasoning model optimized for complex problems">
       <Properties>
         <!-- Reasoning models reject temperature/top_p — API returns 400. https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/reasoning -->
         <Property Name="context_window" DataType="Integer" DefaultValue="200000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
@@ -77,7 +101,7 @@
       </Properties>
     </Model>
 
-    <Model Name="o4-mini-high" Provider="OpenAi" InputCost="3.00" OutputCost="12.00" LoopType="ResponsesApi" SupportsReasoning="true" SupportsVision="true" DisplayName="O4 Mini High" Description="Higher quality reasoning mode">
+    <Model Name="o4-mini-high" Provider="OpenAi" InputCost="3.00" OutputCost="12.00" LoopType="ResponsesApi" ReplacementModel="OpenAi.gpt-5.6-terra" SupportsReasoning="true" SupportsVision="true" DisplayName="O4 Mini High" Description="Deprecated; retained for compatibility. Higher quality reasoning mode">
       <Properties>
         <!-- Reasoning models reject temperature/top_p — API returns 400. https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/reasoning -->
         <Property Name="context_window" DataType="Integer" DefaultValue="200000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
@@ -86,7 +110,7 @@
       </Properties>
     </Model>
 
-    <Model Name="o3" Provider="OpenAi" InputCost="2.00" OutputCost="8.00" LoopType="ResponsesApi" SupportsReasoning="true" SupportsVision="true" DisplayName="O3" Description="Advanced reasoning model for complex tasks">
+    <Model Name="o3" Provider="OpenAi" InputCost="2.00" OutputCost="8.00" LoopType="ResponsesApi" ReplacementModel="OpenAi.gpt-5.6-sol" SupportsReasoning="true" SupportsVision="true" DisplayName="O3" Description="Deprecated; retained for compatibility. Advanced reasoning model for complex tasks">
       <Properties>
         <!-- Reasoning models reject temperature/top_p — API returns 400. https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/reasoning -->
         <Property Name="context_window" DataType="Integer" DefaultValue="200000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
@@ -95,7 +119,7 @@
       </Properties>
     </Model>
 
-    <Model Name="gpt-4.1" Provider="OpenAi" InputCost="2.00" OutputCost="8.00" LoopType="ResponsesApi" SupportsVision="true" DisplayName="GPT-4.1" Description="Enhanced GPT-4 model">
+    <Model Name="gpt-4.1" Provider="OpenAi" InputCost="2.00" OutputCost="8.00" LoopType="ResponsesApi" ReplacementModel="OpenAi.gpt-6-luna" SupportsVision="true" DisplayName="GPT-4.1" Description="Deprecated; retained for compatibility. Enhanced GPT-4 model">
       <Properties>
         <Property Name="context_window" DataType="Integer" DefaultValue="1047576" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
         <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-2.0" />
@@ -107,7 +131,7 @@
       </Properties>
     </Model>
 
-    <Model Name="gpt-4.1-mini" Provider="OpenAi" InputCost="0.40" OutputCost="1.60" LoopType="ResponsesApi" SupportsVision="true" DisplayName="GPT-4.1 Mini" Description="Efficient GPT-4.1 variant">
+    <Model Name="gpt-4.1-mini" Provider="OpenAi" InputCost="0.40" OutputCost="1.60" LoopType="ResponsesApi" ReplacementModel="OpenAi.gpt-6-luna" SupportsVision="true" DisplayName="GPT-4.1 Mini" Description="Deprecated; retained for compatibility. Efficient GPT-4.1 variant">
       <Properties>
         <Property Name="context_window" DataType="Integer" DefaultValue="1047576" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
         <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-2.0" />
@@ -119,7 +143,7 @@
       </Properties>
     </Model>
 
-    <Model Name="gpt-4.1-nano" Provider="OpenAi" InputCost="0.10" OutputCost="0.40" LoopType="ResponsesApi" SupportsVision="true" DisplayName="GPT-4.1 Nano" Description="Ultra-efficient GPT-4.1 for simple tasks">
+    <Model Name="gpt-4.1-nano" Provider="OpenAi" InputCost="0.10" OutputCost="0.40" LoopType="ResponsesApi" ReplacementModel="OpenAi.gpt-5.6-luna" SupportsVision="true" DisplayName="GPT-4.1 Nano" Description="Deprecated; retained for compatibility. Ultra-efficient GPT-4.1 for simple tasks">
       <Properties>
         <Property Name="context_window" DataType="Integer" DefaultValue="128000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
         <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-2.0" />
@@ -131,7 +155,7 @@
       </Properties>
     </Model>
 
-    <Model Name="gpt-5" Provider="OpenAi" InputCost="1.25" OutputCost="10.00" LoopType="ResponsesApi" SupportsReasoning="true" SupportsVision="true" EnabledByDefault="true" DisplayName="GPT-5" Description="Next generation GPT model with improved capabilities">
+    <Model Name="gpt-5" Provider="OpenAi" InputCost="1.25" OutputCost="10.00" LoopType="ResponsesApi" ReplacementModel="OpenAi.gpt-5.6-sol" SupportsReasoning="true" SupportsVision="true" EnabledByDefault="true" DisplayName="GPT-5" Description="Deprecated; retained for compatibility. Next generation GPT model with improved capabilities">
       <Properties>
         <!-- Reasoning models reject temperature/top_p/frequency_penalty/presence_penalty — API returns 400. https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/reasoning -->
         <Property Name="context_window" DataType="Integer" DefaultValue="256000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
@@ -140,7 +164,7 @@
       </Properties>
     </Model>
 
-    <Model Name="gpt-5-mini" Provider="OpenAi" InputCost="0.25" OutputCost="2.00" LoopType="ResponsesApi" SupportsReasoning="true" EnabledByDefault="true" SupportsVision="true" DisplayName="GPT-5 Mini" Description="Efficient GPT-5 variant">
+    <Model Name="gpt-5-mini" Provider="OpenAi" InputCost="0.25" OutputCost="2.00" LoopType="ResponsesApi" ReplacementModel="OpenAi.gpt-5.6-terra" SupportsReasoning="true" EnabledByDefault="true" SupportsVision="true" DisplayName="GPT-5 Mini" Description="Deprecated; retained for compatibility. Efficient GPT-5 variant">
       <Properties>
         <!-- Reasoning models reject temperature/top_p/frequency_penalty/presence_penalty — API returns 400. https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/reasoning -->
         <Property Name="context_window" DataType="Integer" DefaultValue="256000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
@@ -149,7 +173,7 @@
       </Properties>
     </Model>
 
-    <Model Name="gpt-5-nano" Provider="OpenAi" InputCost="0.05" OutputCost="0.40" LoopType="ResponsesApi" SupportsReasoning="true" EnabledByDefault="true" SupportsVision="true" DisplayName="GPT-5 Nano" Description="Ultra-efficient GPT-5 for simple tasks">
+    <Model Name="gpt-5-nano" Provider="OpenAi" InputCost="0.05" OutputCost="0.40" LoopType="ResponsesApi" ReplacementModel="OpenAi.gpt-5.6-luna" SupportsReasoning="true" EnabledByDefault="true" SupportsVision="true" DisplayName="GPT-5 Nano" Description="Deprecated; retained for compatibility. Ultra-efficient GPT-5 for simple tasks">
       <Properties>
         <!-- Reasoning models reject temperature/top_p/frequency_penalty/presence_penalty — API returns 400. https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/reasoning -->
         <Property Name="context_window" DataType="Integer" DefaultValue="128000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
@@ -200,7 +224,7 @@
       </Properties>
     </Model>
 
-    <Model Name="claude-opus-5" Provider="Anthropic" InputCost="5.00" OutputCost="25.00" LoopType="Standard" SupportsVision="true" EnabledByDefault="true" DisplayName="Claude Opus 5" Description="Anthropic's most capable Opus model for complex agentic coding and enterprise work">
+    <Model Name="claude-opus-5" Provider="Anthropic" InputCost="5.00" OutputCost="25.00" LoopType="Standard" ReplacementModel="Anthropic.claude-opus-5-5" SupportsVision="true" EnabledByDefault="true" DisplayName="Claude Opus 5" Description="Deprecated; retained for compatibility. Anthropic's most capable Opus model for complex agentic coding and enterprise work">
       <Properties>
         <!-- Opus 5 removed temperature/top_p/top_k — API returns 400 if sent. Steer with prompting. -->
         <Property Name="context_window" DataType="Integer" DefaultValue="1000000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
@@ -218,7 +242,7 @@
       </Properties>
     </Model>
 
-    <Model Name="claude-haiku-4-5" Provider="Anthropic" InputCost="1.00" OutputCost="5.00" LoopType="Standard" EnabledByDefault="true" SupportsVision="true" DisplayName="Claude Haiku 4.5" Description="Fastest and most cost-effective Claude model">
+    <Model Name="claude-haiku-4-5" Provider="Anthropic" InputCost="1.00" OutputCost="5.00" LoopType="Standard" ReplacementModel="Anthropic.claude-haiku-5-5" EnabledByDefault="true" SupportsVision="true" DisplayName="Claude Haiku 4.5" Description="Deprecated; retained for compatibility. Fastest and most cost-effective Claude model">
       <Properties>
         <Property Name="context_window" DataType="Integer" DefaultValue="200000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
         <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-1.0" />
@@ -229,7 +253,7 @@
       </Properties>
     </Model>
 
-    <Model Name="claude-opus-4-6" Provider="Anthropic" InputCost="5.00" OutputCost="25.00" LoopType="Standard" SupportsVision="true" DisplayName="Claude Opus 4.6" Description="Most capable Claude model for complex tasks">
+    <Model Name="claude-opus-4-6" Provider="Anthropic" InputCost="5.00" OutputCost="25.00" LoopType="Standard" ReplacementModel="Anthropic.claude-opus-5-5" SupportsVision="true" DisplayName="Claude Opus 4.6" Description="Deprecated; retained for compatibility. Most capable Claude model for complex tasks">
       <Properties>
         <Property Name="context_window" DataType="Integer" DefaultValue="200000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
         <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-1.0" />
@@ -251,7 +275,7 @@
       </Properties>
     </Model>
 
-    <Model Name="claude-haiku-4-5-20251001" Provider="Anthropic" InputCost="1.00" OutputCost="5.00" LoopType="Standard" ReplacementModel="Anthropic.claude-haiku-4-5" SupportsVision="true" DisplayName="Claude Haiku 4.5" Description="Fast and affordable Claude model">
+    <Model Name="claude-haiku-4-5-20251001" Provider="Anthropic" InputCost="1.00" OutputCost="5.00" LoopType="Standard" ReplacementModel="Anthropic.claude-haiku-5-5" SupportsVision="true" DisplayName="Claude Haiku 4.5" Description="Fast and affordable Claude model">
       <Properties>
         <Property Name="context_window" DataType="Integer" DefaultValue="200000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
         <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-1.0" />
@@ -262,7 +286,7 @@
       </Properties>
     </Model>
 
-    <Model Name="claude-sonnet-4-5" Provider="Anthropic" InputCost="3.00" OutputCost="15.00" LoopType="Standard" SupportsVision="true" DisplayName="Claude Sonnet 4.5" Description="Previous generation Sonnet">
+    <Model Name="claude-sonnet-4-5" Provider="Anthropic" InputCost="3.00" OutputCost="15.00" LoopType="Standard" ReplacementModel="Anthropic.claude-sonnet-5-5" SupportsVision="true" DisplayName="Claude Sonnet 4.5" Description="Deprecated; retained for compatibility. Previous generation Sonnet">
       <Properties>
         <Property Name="context_window" DataType="Integer" DefaultValue="200000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens (input + output budget)." />
         <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness in output. Range: 0.0-1.0" />
@@ -342,7 +366,7 @@
         <Property Name="timeout" DataType="Integer" DefaultValue="120" Description="Request timeout in seconds." />
       </Properties>
     </Model>
-    <Model Name="gemini-2.5-flash" Provider="Gemini" InputCost="0.30" OutputCost="2.50" LoopType="Standard" ReplacementModel="Gemini.gemini-3.6-flash" SupportsVision="true" DisplayName="Gemini 2.5 Flash" Description="Deprecated Gemini model retained for compatibility; scheduled for shutdown October 16, 2026">
+    <Model Name="gemini-2.5-flash" Provider="Gemini" InputCost="0.30" OutputCost="2.50" LoopType="Standard" ReplacementModel="Gemini.gemini-3.5-flash-lite" SupportsVision="true" DisplayName="Gemini 2.5 Flash" Description="Deprecated Gemini model retained for compatibility; Google limits access to existing users and recommends newer models">
       <Properties>
         <Property Name="context_window" DataType="Integer" DefaultValue="1000000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens." />
         <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness." />
@@ -351,7 +375,7 @@
         <Property Name="timeout" DataType="Integer" DefaultValue="120" Description="Request timeout in seconds." />
       </Properties>
     </Model>
-    <Model Name="deepseek-ai/DeepSeek-V4-Pro" Provider="Together" InputCost="1.74" OutputCost="3.48" LoopType="Standard" DisplayName="DeepSeek V4 Pro (Together)" Description="DeepSeek V4 Pro served by Together's OpenAI-compatible serverless API">
+    <Model Name="deepseek-ai/DeepSeek-V4-Pro" Provider="Together" InputCost="1.74" OutputCost="3.48" LoopType="Standard" ReplacementModel="Together.deepseek-ai/DeepSeek-V4-Pro-0813" DisplayName="DeepSeek V4 Pro (Together)" Description="Deprecated; retained for compatibility. DeepSeek V4 Pro served by Together's OpenAI-compatible serverless API">
       <Properties>
         <Property Name="context_window" DataType="Integer" DefaultValue="512000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens." />
         <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness." />
@@ -395,7 +419,7 @@
         <Property Name="timeout" DataType="Integer" DefaultValue="180" Description="Request timeout in seconds. Range: 10-1800" />
       </Properties>
     </Model>
-    <Model Name="deepseek-ai/DeepSeek-V4-Flash-0731" Provider="Together" InputCost="0.14" OutputCost="0.28" LoopType="Standard" DisplayName="DeepSeek V4 Flash 0731" Description="Low-latency DeepSeek V4 Flash model served by Together's OpenAI-compatible serverless API">
+    <Model Name="deepseek-ai/DeepSeek-V4-Flash-0731" Provider="Together" InputCost="0.14" OutputCost="0.28" LoopType="Standard" ReplacementModel="Together.deepseek-ai/DeepSeek-V4.1-Flash" DisplayName="DeepSeek V4 Flash 0731" Description="Deprecated; retained for compatibility. Low-latency DeepSeek V4 Flash model served by Together's OpenAI-compatible serverless API">
       <Properties>
         <Property Name="context_window" DataType="Integer" DefaultValue="1000000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens." />
         <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness." />
@@ -404,7 +428,7 @@
         <Property Name="timeout" DataType="Integer" DefaultValue="120" Description="Request timeout in seconds." />
       </Properties>
     </Model>
-    <Model Name="meta-llama/Llama-3.3-70B-Instruct-Turbo" Provider="Together" InputCost="1.04" OutputCost="1.04" LoopType="Standard" DisplayName="Llama 3.3 70B Instruct Turbo" Description="Llama-family model served by Together's OpenAI-compatible API">
+    <Model Name="meta-llama/Llama-3.3-70B-Instruct-Turbo" Provider="Together" InputCost="1.04" OutputCost="1.04" LoopType="Standard" ReplacementModel="Together.deepseek-ai/DeepSeek-V4.1-Flash" DisplayName="Llama 3.3 70B Instruct Turbo" Description="Deprecated; retained for compatibility. Llama-family model served by Together's OpenAI-compatible API">
       <Properties>
         <Property Name="context_window" DataType="Integer" DefaultValue="131072" IsContextWindowTokenBudget="true" Description="Total model context window in tokens." />
         <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness." />
