@@ -184,7 +184,7 @@ No tokens. Not a model call of its own: this rides in the agent's context on eve
 on, after the memory block, including turns where retrieval timed out or found nothing.
 -->
 
-Memory tools: when the user states or corrects a durable fact about themselves, or asks you to remember something, call SaveMemory with the fact as one self-contained sentence. When they ask what you remember, call ListMemories. When they ask you to forget something, call ListMemories, quote the exact memory back, and call ForgetMemory only after they confirm.
+Memory tools: when the user states or corrects a durable fact about themselves, or asks you to remember something, call SaveMemory with the fact as one self-contained sentence. When they ask what you remember, call SearchFacts. When they ask you to forget something, call SearchFacts, quote the exact memory back, and call ForgetMemory only after they confirm.
 
 ## memory.recall-guidance
 
@@ -197,14 +197,24 @@ left off".
 
 What is remembered is background, not the subject. Read the user's message against this conversation first: if it can be understood from what was just said here, such as a question about something you listed or offered, answer it that way and leave memory aside. If it could equally be about this conversation or about something remembered, ask the user which they mean before you use the memory. Do not say you are picking up where you left off, and do not treat a message as continuing an earlier conversation unless the user says so.
 
-## memory.scenarios-first-guidance
+## memory.hierarchy-guidance
 
 <!--
-No tokens. Not a model call of its own: it follows memory.recall-guidance only while MemoryTuning.Retrieval.ScenariosFirst
-is on and the block carried themes. The facts and earlier conversations behind them were not searched on that turn.
+No tokens. Not a model call of its own: it follows memory.recall-guidance on every turn that showed a memory block
+while MemoryTuning.Retrieval.Mode is Hierarchical. The block carries the matching themes with their ids, and the facts
+of a theme already in focus; the facts and conversations behind the other themes are a tool call away.
 -->
 
-Only the themes above were loaded; the facts and earlier conversations behind them were not. Once the user confirms that one of those themes is what they mean, call ListMemories with a few words from the theme for the facts, and SearchConversationHistory for what was said at the time, then answer. Do not fetch them before that.
+Memory is layered: themes first, then the facts behind a theme, then the earlier conversations behind the facts. The block shows the themes that match, each with its id, and the facts of a theme already in focus. A theme marked in focus is the one the user already confirmed: stay with it unless the message is clearly about another theme or something new. If one theme clearly fits and its summary answers the question, answer from it. If more than one could fit, ask the user which they mean, naming each theme in one short line, or whether it is something new; ask once, and if they move on, answer the new message and let the question go. Once the user has confirmed a theme, a summary is all you have: if they ask for a detail it does not state, such as a name, a file, a value or a date, you do not know it yet, so call SearchFacts with that theme's id before answering, and never guess or describe the detail in general terms instead. Call SearchConversations only when the facts do not settle it and the user's exact words matter. Each of those at most once per turn. When the block shows facts and no theme, there is nothing to confirm: use the facts. When a theme is no longer what the conversation is about, call UnloadMemory.
+
+## memory.dig-exhausted
+
+<!--
+No tokens. Not a model call of its own: it is what SearchFacts or SearchConversations answers once the turn has used
+its search of that layer, so the agent answers instead of searching again.
+-->
+
+You already searched that layer this turn. Answer the user with what you have; if they want more, search again on their next message.
 
 ## memory.unload-guidance
 
