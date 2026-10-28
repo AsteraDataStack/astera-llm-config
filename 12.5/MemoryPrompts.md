@@ -137,15 +137,19 @@ Return one entry per scenario in "groups". A group is either:
 - an existing scenario: "existing" is its label (S1, S2, ...), "title" is "", and "summary" is a rewritten
   summary only when the newly grouped atoms no longer fit the current one, otherwise "";
 - a new scenario: "existing" is null, "title" is 2-6 words, "summary" is 1-3 sentences covering its atoms.
+Each group also has "merge": the labels of existing scenarios that are the same theme as this group under
+another name, usually []. Their facts move into this group and they are retired, so give the group a summary
+that covers them.
 
 Guidelines:
 1. Prefer existing scenarios. Create a new one only for a clearly distinct theme with at least 2 atoms.
 2. Every atom label (A1, A2, ...) appears in exactly one group's "atoms". Use only labels from the lists.
 3. A new scenario is defined by the title and summary in its own group. Do not refer to scenarios that are not in the list.
 4. When EXISTING_SCENARIOS is "(none yet)" there is nothing to reference: every group must have "existing": null with its own title and summary.
+5. Merge only scenarios that are plainly one theme, such as the same project or the same habit described twice. Sharing a few words is not enough. A merged label appears in one "merge" list and nowhere else.
 
 Return ONLY JSON, no prose, no code fences:
-{"groups": [{"existing": "S1", "title": "", "summary": "", "atoms": ["A1", "A4"]}, {"existing": null, "title": "...", "summary": "...", "atoms": ["A2", "A3"]}]}
+{"groups": [{"existing": "S1", "title": "", "summary": "", "atoms": ["A1", "A4"], "merge": []}, {"existing": null, "title": "...", "summary": "...", "atoms": ["A2", "A3"], "merge": ["S3"]}]}
 
 ## memory.scenario-summary
 
@@ -207,7 +211,7 @@ while MemoryTuning.Retrieval.Mode is Hierarchical. The block carries the matchin
 of a theme already in focus; the facts and conversations behind the other themes are a tool call away.
 -->
 
-Memory is layered: themes first, then the facts behind a theme, then the earlier conversations behind the facts. The block shows the themes that match, each with its id, and the facts of a theme already in focus. A theme marked in focus is the one the user already confirmed: stay with it unless the message is clearly about another theme or something new. If one theme clearly fits and its summary answers the question, answer from it. If more than one could fit, ask the user which they mean, naming each theme in one short line, or whether it is something new; ask once, and if they move on, answer the new message and let the question go. Once the user has confirmed a theme, a summary is all you have: if they ask for a detail it does not state, such as a name, a file, a value or a date, you do not know it yet, so call SearchFacts with that theme's id before answering, and never guess or describe the detail in general terms instead. Call SearchConversations only when the facts do not settle it and the user's exact words matter. Each of those at most once per turn. When the block shows facts and no theme, there is nothing to confirm: use the facts. When a theme is no longer what the conversation is about, call UnloadMemory with scope "theme" to leave it behind and keep memory; call UnloadMemory alone only when memory as a whole has nothing to do with the conversation.
+Memory is layered: themes first, then the facts behind a theme, then the earlier conversations behind the facts. The block shows the themes that match, each with its id, and the facts of a theme already in focus. A theme marked in focus is the one the user already confirmed: stay with it unless the message is clearly about another theme or something new. If one theme clearly fits and its summary answers the question, answer from it. If more than one could fit, do not answer yet and do not ask about anything else: ask the user which they mean, naming each of those themes by its title in one short line, and whether it is something new instead. Ask once; if they move on, answer the new message and let the question go. Once the user has confirmed a theme, a summary is all you have: if they ask for a detail it does not state, such as a name, a file, a value or a date, you do not know it yet, so call SearchFacts with that theme's id before answering, and never guess or describe the detail in general terms instead. Call SearchConversations only when the facts do not settle it and the user's exact words matter. Each of those at most once per turn. When the block shows facts and no theme, there is nothing to confirm: use the facts. When a theme is no longer what the conversation is about, call UnloadMemory with scope "theme" to leave it behind and keep memory; call UnloadMemory alone only when memory as a whole has nothing to do with the conversation.
 
 ## memory.dig-exhausted
 
