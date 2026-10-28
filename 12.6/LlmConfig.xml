@@ -8,7 +8,7 @@
     <Default Role="Completion" Provider="OpenAi" Model="OpenAi.gpt-5" />
     <Default Role="Completion" Provider="Anthropic" Model="Anthropic.claude-sonnet-5" />
     <Default Role="Completion" Provider="Gemini" Model="Gemini.gemini-3.6-flash" />
-    <Default Role="Completion" Provider="Together" Model="Together.deepseek-ai/DeepSeek-V4-Pro" />
+    <Default Role="Completion" Provider="Together" Model="Together.deepseek-ai/DeepSeek-V4-Pro-0813" />
   </Defaults>
   <Models>
     <!-- OpenAI Models -->
@@ -351,9 +351,27 @@
         <Property Name="timeout" DataType="Integer" DefaultValue="120" Description="Request timeout in seconds." />
       </Properties>
     </Model>
-    <Model Name="deepseek-ai/DeepSeek-V4-Pro" Provider="Together" InputCost="1.74" OutputCost="3.48" LoopType="Standard" DisplayName="DeepSeek V4 Pro (Together)" Description="DeepSeek V4 Pro served by Together's OpenAI-compatible serverless API">
+    <Model Name="deepseek-ai/DeepSeek-V4-Pro" Provider="Together" InputCost="1.74" OutputCost="3.48" LoopType="Standard" ReplacementModel="Together.deepseek-ai/DeepSeek-V4-Pro-0813" DisplayName="DeepSeek V4 Pro (Together)" Description="Deprecated DeepSeek V4 Pro model retained for compatibility; no longer available on Together's serverless API">
       <Properties>
         <Property Name="context_window" DataType="Integer" DefaultValue="512000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens." />
+        <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness." />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="8192" Description="Maximum response tokens." />
+        <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Nucleus sampling parameter." />
+        <Property Name="timeout" DataType="Integer" DefaultValue="120" Description="Request timeout in seconds." />
+      </Properties>
+    </Model>
+    <Model Name="deepseek-ai/DeepSeek-V3" Provider="Together" InputCost="1.25" OutputCost="1.25" LoopType="Standard" ReplacementModel="Together.deepseek-ai/DeepSeek-V4-Pro-0813" DisplayName="DeepSeek V3 (Together)" Description="Deprecated DeepSeek V3 model retained for compatibility; no longer available on Together's serverless API">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="131072" IsContextWindowTokenBudget="true" Description="Total model context window in tokens." />
+        <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness." />
+        <Property Name="max_tokens" DataType="Integer" DefaultValue="8192" Description="Maximum response tokens." />
+        <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Nucleus sampling parameter." />
+        <Property Name="timeout" DataType="Integer" DefaultValue="120" Description="Request timeout in seconds." />
+      </Properties>
+    </Model>
+    <Model Name="deepseek-ai/DeepSeek-R1" Provider="Together" InputCost="3.00" OutputCost="7.00" LoopType="Standard" ReplacementModel="Together.deepseek-ai/DeepSeek-V4-Pro-0813" DisplayName="DeepSeek R1 (Together)" Description="Deprecated DeepSeek R1 model retained for compatibility; no longer available on Together's serverless API">
+      <Properties>
+        <Property Name="context_window" DataType="Integer" DefaultValue="163840" IsContextWindowTokenBudget="true" Description="Total model context window in tokens." />
         <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness." />
         <Property Name="max_tokens" DataType="Integer" DefaultValue="8192" Description="Maximum response tokens." />
         <Property Name="top_p" DataType="Decimal" DefaultValue="1.0" Description="Nucleus sampling parameter." />
@@ -395,7 +413,7 @@
         <Property Name="timeout" DataType="Integer" DefaultValue="180" Description="Request timeout in seconds. Range: 10-1800" />
       </Properties>
     </Model>
-    <Model Name="deepseek-ai/DeepSeek-V4-Flash-0731" Provider="Together" InputCost="0.14" OutputCost="0.28" LoopType="Standard" DisplayName="DeepSeek V4 Flash 0731" Description="Low-latency DeepSeek V4 Flash model served by Together's OpenAI-compatible serverless API">
+    <Model Name="deepseek-ai/DeepSeek-V4-Flash-0731" Provider="Together" InputCost="0.14" OutputCost="0.28" LoopType="Standard" ReplacementModel="Together.deepseek-ai/DeepSeek-V4.1-Flash" DisplayName="DeepSeek V4 Flash 0731" Description="Deprecated DeepSeek V4 Flash 0731 model retained for compatibility; no longer available on Together's serverless API">
       <Properties>
         <Property Name="context_window" DataType="Integer" DefaultValue="1000000" IsContextWindowTokenBudget="true" Description="Total model context window in tokens." />
         <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness." />
@@ -404,7 +422,7 @@
         <Property Name="timeout" DataType="Integer" DefaultValue="120" Description="Request timeout in seconds." />
       </Properties>
     </Model>
-    <Model Name="meta-llama/Llama-3.3-70B-Instruct-Turbo" Provider="Together" InputCost="1.04" OutputCost="1.04" LoopType="Standard" DisplayName="Llama 3.3 70B Instruct Turbo" Description="Llama-family model served by Together's OpenAI-compatible API">
+    <Model Name="meta-llama/Llama-3.3-70B-Instruct-Turbo" Provider="Together" InputCost="1.04" OutputCost="1.04" LoopType="Standard" ReplacementModel="Together.deepseek-ai/DeepSeek-V4.1-Flash" DisplayName="Llama 3.3 70B Instruct Turbo" Description="Deprecated Llama 3.3 70B Instruct Turbo model retained for compatibility; no longer available on Together's serverless API">
       <Properties>
         <Property Name="context_window" DataType="Integer" DefaultValue="131072" IsContextWindowTokenBudget="true" Description="Total model context window in tokens." />
         <Property Name="temperature" DataType="Decimal" DefaultValue="1.0" Description="Controls randomness." />
